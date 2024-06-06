@@ -1,3 +1,3 @@
 # Notebok
 
-## This is a notebook repo
+## This is a notebook repo.
